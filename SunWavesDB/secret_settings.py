@@ -1,4 +1,4 @@
 from SunWavesDB.settings import SECRET_KEY
 
 
-SECRET_KEY = 'd%x%)!))i1f6(wqoa1-7(0p-mciy@=+77d=3c#6_#lh-3vu1%5'
+SECRET_KEY = 'smw0p$e-j0*0ok*z=ib=nvxs1v$sqsd0ff^_t5$o$l61=-0!ae'
