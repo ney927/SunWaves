@@ -20,13 +20,30 @@
 <form action="" method='POST' id=myForm>
   {%csrf_token%}
   <label for="searchIND">Industry</label>
-<input type="text" name='searchIND'value='Any' ><br><br>
+  <select name="searchIND" id="searchIND" value='Any'>
+    <option value="Any">Any</option>
+    {%for ind in industries%}
+    <option value="{{ind}}">{{ind}}</option>
+    {%endfor%}
+  </select><br><br>
+
 <label for="searchPOS">Position</label>
-<input type="text" name='searchPOS'value='Any'><br><br>
-<label for="searchEDU">Education</label>
-<input type="text" name='searchEDU'value='Any'><br><br>
+<select name="searchPOS" id="searchPOS" value='Any'>
+  <option value="Any">Any</option>
+  {%for pos in positions%}
+  <option value="{{pos}}">{{pos}}</option>
+  {%endfor%}
+</select><br><br>
+
+<label for="searchRES">Residency</label>
+<select name="searchRES" id="searchRESR" value='Any'>
+  <option value="Any">Any</option>
+  <option value="CAN">Canada</option>
+  <option value="Other">Other</option>
+</select><br><br>
+
 <label for="searchEXP">Experience</label>
-<input type="text" name='searchEXP'value='Any'><br><br>
+<input type="number" name='searchEXP'value=0><br><br>
 <button type="submit" class="btn btn-primary mb-2">Search</button>
 </form>
 {%endblock%}

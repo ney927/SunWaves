@@ -8,7 +8,7 @@ def create_client_view(request):
     form = clientForm(request.POST, request.FILES)
     if form.is_valid():
       form.save()
-      return redirect('results', 'Any', 'Any', 'Any', 'Any')
+      return redirect('results', 'Any', 'Any', 'Any', 0)
   context = {
     'form': form,
   }
@@ -23,22 +23,28 @@ def search_view(request):
   if request.method == 'POST':
     ind = request.POST.get('searchIND')
     pos = request.POST.get('searchPOS')
-    edu = request.POST.get('searchEDU')
+    res = request.POST.get('searchRES')
     exp = request.POST.get('searchEXP')
-    return redirect('results', ind, pos, edu, exp)
+    return redirect('results', ind, pos, res, exp)
   context= {
     'clients': cl,
+    'industries': industryChoices.objects.all(),
+    'positions': positionChoices.objects.all(),
   }
   return render(request, 'searchClients.html', context)
 
-def search_results_view(request, ind, pos, edu, exp):
+def search_results_view(request, ind, pos, res, exp):
   query = client.objects.all()
   if ind != 'Any':
     query = query.filter(industry__ind=ind)
   if pos != 'Any':
     query = query.filter(position__pos=pos)
+  if res != 'Any':
+    query = query.filter(residency=res)
+  if exp != 0:
+    query = query.filter(experience__gte=exp)
   context = {
-    'query': query
+    'query': query,
   }
   return render(request, 'searchResults.html', context)
 

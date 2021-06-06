@@ -25,7 +25,7 @@ urlpatterns = [
     path('home/', home_view, name='home'),
     path('search/', search_view, name='search'),
     path('add-options/', add_options_view, name='add-options'),
-    path('results/<str:ind>/<str:pos>/<str:edu>/<str:exp>/', search_results_view, name='results')
+    path('results/<str:ind>/<str:pos>/<str:res>/<int:exp>/', search_results_view, name='results')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
