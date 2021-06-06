@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from clients.views import create_client_view, home_view, search_view, add_options_view, search_results_view
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,3 +27,5 @@ urlpatterns = [
     path('add-options/', add_options_view, name='add-options'),
     path('results/<str:ind>/<str:pos>/<str:edu>/<str:exp>/', search_results_view, name='results')
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

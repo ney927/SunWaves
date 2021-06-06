@@ -1,14 +1,14 @@
 
 <style>
   #client{
-    margin: 100px;
+    margin: 50px 20px;
   }
   table, th, td{
     border: 1px solid black;
     border-collapse: collapse;
   }
   th, td{
-    padding: 15px;
+    padding: 20px 10px;
   }
 </style>
 
@@ -16,12 +16,17 @@
 
 {%block content%}
 <div id=client>
+{%if not query %}
+<p>No Results</p>
+{%else%}
 <table>
   <tr>
     <th>Name</th>
-    <th>Country</th>
     <th>Email</th>
-    <th>Phone Number</th>
+    <th>Phone_Number</th>
+    <th>Country</th>
+    <th>Residency</th>
+    <th>Status</th>
     <th>Industry</th>
     <th>Position</th>
     <th>Education</th>
@@ -31,19 +36,20 @@
 {%for q in query%}
 <tr>
 <td>{{q}}</td>
-<td>{{q.country}}</td>
 <td>{{q.email}}</td>
 <td>{{q.phone_number}}</td>
+<td>{{q.country}}</td>
+<td>{{q.residency}}</td>
+<td>{{q.status}}</td>
 <td>{{q.industry.ind}}</td>
 <td>{{q.position.pos}}</td>
 <td>{{q.education}}</td>
 <td>{{q.experience}}</td>
-<td>{{q.resume}}</td>
+<td><a href="{{q.resume.url}}" style="color: rgb(0, 0, 100); text-decoration: underline;">Resume</a target="_blank" ></td>
 </tr>
 {%endfor%}
 </table>
-{%if not query %}
-<p>No Results</p>
+
 {%endif%}
 </div>
 {%endblock%}

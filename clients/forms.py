@@ -7,8 +7,8 @@ class clientForm(forms.ModelForm):
     fields = [
       'name',
       'country',
-      # 'residence',
-      # 'status',
+      'residency',
+      'status',
       'email',
       'phone_number',
       'experience',
@@ -17,6 +17,18 @@ class clientForm(forms.ModelForm):
       'education',
       'resume',
     ]
+  def clean(self):
+    cleaned_data = super().clean()
+    res = cleaned_data.get('residency')
+    stat = cleaned_data.get('status')
+    print(res)
+    print(stat)
+
+    if res == 'CAN' and stat == 'N/A':
+      raise forms.ValidationError("Status cannot be N/A if residency is Canada")
+    if res == 'Other' and stat != 'N/A':
+      raise forms.ValidationError("If residency is other, status must be N/A")
+    return cleaned_data
 
 class addIndustry(forms.ModelForm):
   class Meta:

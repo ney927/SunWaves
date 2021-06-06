@@ -8,7 +8,7 @@ def create_client_view(request):
     form = clientForm(request.POST, request.FILES)
     if form.is_valid():
       form.save()
-      return redirect('home')
+      return redirect('results', 'Any', 'Any', 'Any', 'Any')
   context = {
     'form': form,
   }
@@ -35,6 +35,8 @@ def search_results_view(request, ind, pos, edu, exp):
   query = client.objects.all()
   if ind != 'Any':
     query = query.filter(industry__ind=ind)
+  if pos != 'Any':
+    query = query.filter(position__pos=pos)
   context = {
     'query': query
   }
