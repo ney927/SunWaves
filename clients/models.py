@@ -23,7 +23,7 @@ class client(models.Model):
   phone_number = models.CharField(max_length=50)
   experience = models.IntegerField()
   industry = models.ForeignKey(industryChoices, on_delete=models.CASCADE, related_name='industries+')
-  position = models.ForeignKey(industryChoices, on_delete=models.CASCADE, related_name='positions+')
+  position = models.ForeignKey(positionChoices, on_delete=models.CASCADE, related_name='positions+')
   education = models.CharField(max_length=100, choices=education_choices)
   resume = models.FileField()
 

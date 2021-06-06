@@ -14,5 +14,13 @@
 {{client.industry}}
 {{client.position}}
 {%endfor%}
-{%endblock%}
+
+{%for ind in inds%}
+{{ind}}
+{%endfor%}
+
+{%for pos in poses%}
+{{pos}}
+{%endfor%}
 </div>
+{%endblock%}
