@@ -8,7 +8,7 @@ def create_client_view(request):
     form = clientForm(request.POST, request.FILES)
     if form.is_valid():
       form.save()
-      return redirect('results', 'Any', 'Any', 'Any', 0)
+      return redirect('results', 'Any', 'Any', 'Any', 0, 'None')
   context = {
     'form': form,
   }
@@ -25,7 +25,7 @@ def search_view(request):
     pos = request.POST.get('searchPOS')
     res = request.POST.get('searchRES')
     exp = request.POST.get('searchEXP')
-    return redirect('results', ind, pos, res, exp)
+    return redirect('results', ind, pos, res, exp, 'None')
   context= {
     'clients': cl,
     'industries': industryChoices.objects.all(),
@@ -33,7 +33,7 @@ def search_view(request):
   }
   return render(request, 'searchClients.html', context)
 
-def search_results_view(request, ind, pos, res, exp):
+def search_results_view(request, ind, pos, res, exp, sort):
   query = client.objects.all()
   if ind != 'Any':
     query = query.filter(industry__ind=ind)
@@ -43,6 +43,13 @@ def search_results_view(request, ind, pos, res, exp):
     query = query.filter(residency=res)
   if exp != 0:
     query = query.filter(experience__gte=exp)
+  if sort != 'None':
+    query = query.order_by(sort, '-experience')
+  else:
+    query = query.order_by('-experience')
+  if request.method == 'POST':
+    sort = request.POST.get('sort')
+    return redirect('results', ind, pos, res, exp, sort)
   context = {
     'query': query,
   }
@@ -64,3 +71,11 @@ def add_options_view(request):
     'Pform': Pform,
   }
   return render(request, 'addOptions.html', context)
+
+def delete_view(request, id):
+  cl = client.objects.get(id=id)
+  cl.delete()
+  context = {
+    'cl': cl
+  }
+  return render(request, 'deleteClient.html', context)

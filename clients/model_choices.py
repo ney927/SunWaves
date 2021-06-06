@@ -21,11 +21,11 @@ position_choices = [
 
 #used
 education_choices = [
-  ('High School', 'High School'),
-  ('Associate Degree', 'Associate Degree'),
-  ('Bachelors Degree', 'Bachelors Degree'),
-  ('Masters Degree', 'Masters Degree'),
-  ('Doctoral Degree', 'Doctoral Degree'),
+  ('A', 'High School'),
+  ('B', 'Associate Degree'),
+  ('C', 'Bachelors Degree'),
+  ('D', 'Masters Degree'),
+  ('E', 'Doctoral Degree'),
 ]
 
 # used

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from clients.views import create_client_view, home_view, search_view, add_options_view, search_results_view
+from clients.views import create_client_view, home_view, search_view, add_options_view, search_results_view, delete_view
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,7 +25,8 @@ urlpatterns = [
     path('home/', home_view, name='home'),
     path('search/', search_view, name='search'),
     path('add-options/', add_options_view, name='add-options'),
-    path('results/<str:ind>/<str:pos>/<str:res>/<int:exp>/', search_results_view, name='results')
+    path('results/<str:ind>/<str:pos>/<str:res>/<int:exp>/<str:sort>/', search_results_view, name='results'),
+    path('delete/<int:id>/', delete_view, name='delete')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
