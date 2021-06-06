@@ -20,14 +20,26 @@ def home_view(request):
 
 def search_view(request):
   cl = client.objects.all()
-  inds = industryChoices.objects.all()
-  poses = positionChoices.objects.all()
+  if request.method == 'POST':
+    ind = request.POST.get('searchIND')
+    pos = request.POST.get('searchPOS')
+    edu = request.POST.get('searchEDU')
+    exp = request.POST.get('searchEXP')
+    return redirect('results', ind, pos, edu, exp)
   context= {
     'clients': cl,
-    'inds': inds,
-    'poses': poses,
   }
   return render(request, 'searchClients.html', context)
+
+def search_results_view(request, ind, pos, edu, exp):
+  query = client.objects.all()
+  if ind != 'Any':
+    query = query.filter(industry__ind=ind)
+  context = {
+    'query': query
+  }
+  return render(request, 'searchResults.html', context)
+
 
 def add_options_view(request):
   Iform = addIndustry()

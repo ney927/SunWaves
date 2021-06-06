@@ -3,24 +3,30 @@
   #client{
     margin: 100px;
   }
+
+  #myForm{
+    margin: 70px 60vh;
+    padding: 30px 50px;
+    border-style: solid;
+    border-color: rgb(237, 236, 236);
+    display: inline-block;
+    
+  }
 </style>
 
 {%extends 'base.html'%}
 
 {%block content%}
-<div id=client>
-{%for client in clients%}
-{{client}}
-{{client.industry}}
-{{client.position}}
-{%endfor%}
-
-{%for ind in inds%}
-{{ind}}
-{%endfor%}
-
-{%for pos in poses%}
-{{pos}}
-{%endfor%}
-</div>
+<form action="" method='POST' id=myForm>
+  {%csrf_token%}
+  <label for="searchIND">Industry</label>
+<input type="text" name='searchIND'value='Any' ><br><br>
+<label for="searchPOS">Position</label>
+<input type="text" name='searchPOS'value='Any'><br><br>
+<label for="searchEDU">Education</label>
+<input type="text" name='searchEDU'value='Any'><br><br>
+<label for="searchEXP">Experience</label>
+<input type="text" name='searchEXP'value='Any'><br><br>
+<button type="submit" class="btn btn-primary mb-2">Search</button>
+</form>
 {%endblock%}

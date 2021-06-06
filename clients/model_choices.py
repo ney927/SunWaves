@@ -1,3 +1,4 @@
+#not used
 industry_choices = [
     ('Other', 'Other'),
     ('Lodging', 'Lodging'),
@@ -12,10 +13,13 @@ industry_choices = [
     ('Finance', 'Finance'),
     ('Retail', 'Retail'),
   ]
+#not used
 position_choices = [
     ('Other', 'Other'),
     ('Front Clerk', 'Front Clerk'),
   ]
+
+#used
 education_choices = [
   ('High School', 'High School'),
   ('Associate Degree', 'Associate Degree'),
@@ -24,5 +28,16 @@ education_choices = [
   ('Doctoral Degree', 'Doctoral Degree'),
 ]
 
-# def add_option(list, opt):
-#   list.append(opt)
+# used
+res_choices = [
+  ('CAN', 'Canada'),
+  ('Other', 'Other'),
+]
+
+#used
+status_choices = [
+  ('Student', 'Student'),
+  ('Worker', 'Worker'),
+  ('Visitor', 'Visitor'),
+  ('N/A', 'N/A'),
+]

@@ -7,13 +7,15 @@ class clientForm(forms.ModelForm):
     fields = [
       'name',
       'country',
+      # 'residence',
+      # 'status',
       'email',
       'phone_number',
       'experience',
       'industry',
       'position',
       'education',
-      'resume'
+      'resume',
     ]
 
 class addIndustry(forms.ModelForm):
