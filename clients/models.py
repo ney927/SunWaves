@@ -9,10 +9,16 @@ class client(models.Model):
   email = models.EmailField(max_length=100)
   phone_number = models.CharField(max_length=50)
   experience = models.IntegerField()
-  industry = models.CharField(max_length=100, choices=industry_choices)
-  position = models.CharField(max_length=100, choices=position_choices)
+  industry = models.CharField(max_length=100)
+  position = models.CharField(max_length=100)
   education = models.CharField(max_length=100, choices=education_choices)
 
   def __str__(self):
       return f'{self.name}'
+  
+  def addIndustry(self):
+      return self.industry == 'Other'
+
+  def addPosition(self):
+    return self.position == 'Other'
 

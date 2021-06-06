@@ -1,0 +1,18 @@
+
+<style>
+  #client{
+    margin: 100px;
+  }
+</style>
+
+{%extends 'base.html'%}
+
+{%block content%}
+<div id=client>
+{%for client in clients%}
+{{client}}
+{{client.industry}}
+{{client.position}}
+{%endfor%}
+{%endblock%}
+</div>

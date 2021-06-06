@@ -1,5 +1,5 @@
 industry_choices = [
-
+    ('Other', 'Other'),
     ('Lodging', 'Lodging'),
     ('Food&Berverage', 'Food&Beverage'),
     ('IT', 'IT'),
@@ -13,6 +13,7 @@ industry_choices = [
     ('Retail', 'Retail'),
   ]
 position_choices = [
+    ('Other', 'Other'),
     ('Front Clerk', 'Front Clerk'),
   ]
 education_choices = [
@@ -22,3 +23,6 @@ education_choices = [
   ('Masters Degree', 'Masters Degree'),
   ('Doctoral Degree', 'Doctoral Degree'),
 ]
+
+# def add_option(list, opt):
+#   list.append(opt)
