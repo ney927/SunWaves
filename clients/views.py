@@ -52,6 +52,7 @@ def search_results_view(request, ind, pos, res, exp, sort):
     return redirect('results', ind, pos, res, exp, sort)
   context = {
     'query': query,
+    'sorted': sort
   }
   return render(request, 'searchResults.html', context)
 
