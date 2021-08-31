@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
@@ -65,8 +65,10 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'django.core.context_processors.media',
             ],
         },
     },
@@ -125,6 +127,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-MEDIA_ROOT = 'media'
+# MEDIA_ROOT = 'media'
 
-MEDIA_URL = 'media/'
+# MEDIA_URL = '/media/'
+
+STATIC_DIR =  BASE_DIR / 'static' 
+MEDIA_DIR =  BASE_DIR / 'media' 
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'

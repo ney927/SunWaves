@@ -68,7 +68,7 @@
 <td>Doctorate</td>
 {%endif%}
 <td>{{q.experience}}</td>
-<td><a href="{{q.resume.url}}" style="color: rgb(0, 0, 100); text-decoration: underline;">Resume</a target="_blank" ></td>
+<td><a target="_blank" href="{{q.resume.url}}" style="color: rgb(0, 0, 100); text-decoration: underline;">Resume</a target="_blank" ></td>
 <td><a href="{%url 'delete' q.id%}" style="color: rgb(0, 0, 100); text-decoration: underline;">Delete {{q}}</a></td>
 </tr>
 {%endfor%}
